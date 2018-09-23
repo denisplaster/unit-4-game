@@ -1,0 +1,22 @@
+body {
+
+}
+.header {
+    width: 150px;
+    height: 50px;
+    background-color: orange;
+    margin-bottom: 5px;
+}
+
+.crystal-image {
+    width: 100px;
+    height: 100px;
+    float: left;
+  }
+
+.rules {
+    width: 350px;
+    height: 400px;
+    background-color: rgb(223, 142, 43);
+    margin-bottom: 5px;
+}
