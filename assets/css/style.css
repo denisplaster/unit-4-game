@@ -20,11 +20,6 @@
     margin-top:16%
 }
 
-.crystal:hover{
-    box-shadow: 15px 15px 15px rbga(0,0,0,0.5);
-    cursor: pointer;
-}
-
 #result {
     padding: 20px;
     background-color: gold;
@@ -39,15 +34,6 @@
     height: 600px;
 
 }
-/* .col-12{
-    padding:10px;
-    background-color: black;
-    text-align: center;
-    color:white;
-    box-shadow:0px 0px 0px 10px white inset;
-    
-
-} */
 
 img{
     width:100px;
@@ -59,6 +45,20 @@ p {
     text-align: center;
 }
 
-/* audio { 
-    display:none;
- } */
+.crystal:hover {
+    /* on hover - scale to this x,y size */
+    transform: scale(1.15,1.15);
+    /* property values: name, duration, iteration, timing-function */
+    animation: jiggle 0.5s infinite linear;
+  }
+  
+  @keyframes jiggle {
+    /* start at 0deg and this scale size.
+       scale size is repeated here to maintain smooth scaling */
+    0% {transform: rotate(0deg) scale(1.15,1.15);}
+    /* midway rotate 2deg right */
+    50% {transform: rotate(2deg) scale(1.15,1.15);}
+    /* end rotate -2deg left */
+    100% {transform: rotate(-2deg) scale(1.15,1.15)}
+  }
+  
