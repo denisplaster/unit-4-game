@@ -34,7 +34,8 @@ var startGame = function () {
     // The random number shown at the start of the game should be between 19 - 120.
     random_result = Math.ceil(Math.random() * 102) + 18;
     // The player will be shown a random number at the start of the game.
-    $("#result").html('Random Result: ' + random_result);
+    $("#result").html("The Magic Number is: " + random_result);
+    $("#result").css({"font-size": "150%"});
     // There will be four crystals displayed as buttons on the page.
     for (var i = 0; i < 4; i++) {
     // Each crystal should have a random hidden value between 1 - 12.
@@ -60,7 +61,7 @@ var startGame = function () {
         
     }
 
-    $("#previous").html("Total Score: " + previous);
+    $("#previous").html("Crystals Collected: " + previous);
 
 }
 
@@ -72,13 +73,14 @@ startGame();
     // When they do click one, update the player's score counter.   
         previous += num;
 
-        $("#previous").html("Total Score: " + previous);
+        $("#previous").html("Total Crystals: " + previous);
     // The player loses if their score goes above the random number.
         if(previous > random_result){
         
             lost++;     
     // The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
             $("#lost").html("Losses: " + lost);
+            $("#lost").css('color', 'red');
 
             previous = 0;
     // The game restarts whenever the player wins or loses.
@@ -93,6 +95,7 @@ startGame();
             audioElement.play();
 
             $("#win").html("Wins: " + win);
+            $("#win").css({"font-size": "125%"});
 
             previous = 0;
      // The game restarts whenever the player wins or loses.
