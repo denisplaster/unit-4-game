@@ -1,15 +1,12 @@
-// There will be four crystals displayed as buttons on the page.
-
-
-// The player will be shown a random number at the start of the game.
-
-// When the player clicks on a crystal, it will add a specific amount of points to the player's total score. 
-var random_result;
-var lost = 0;
-var win = 0;
-var previous = 0;
-
-  // Audio Setup
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    if(!isChrome){
+      $('#iframeAudio').remove()
+    }
+  else{
+     $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
+  }
+    
+    // Audio Setup
     // ===========
     
     // Create an audio element with JavaScript
@@ -17,18 +14,14 @@ var previous = 0;
     audioElement.volume = 0.2;
 
     
-    // Set it's source to the location
-    // of audio file.
+    // Set it's source to the location of audio file.
     audioElement.setAttribute("src", "assets/audio/Porter Ln 5.mp3");
-    
-    // Theme Button
-    // $(".theme-button").on("click", function() {
-     
-    //   audioElement.play()
-      
-    // });
-    
-    
+
+var random_result;
+var lost = 0;
+var win = 0;
+var previous = 0;  
+// When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
 var startGame = function () {
 
     $(".crystals").empty();
@@ -39,12 +32,13 @@ var startGame = function () {
                   'https://photos.smugmug.com/Web-photos/n-fCs8Wf/i-3H2mNL3/0/14df5a89/S/i-3H2mNL3-S.png'];
     // The random number shown at the start of the game should be between 19 - 120.
     random_result = Math.ceil(Math.random() * 102) + 18;
-
+    // The player will be shown a random number at the start of the game.
     $("#result").html('Random Result: ' + random_result);
-
+    // There will be four crystals displayed as buttons on the page.
     for (var i = 0; i < 4; i++) {
-
-        var random = Math.ceil(Math.random() * 12) + 1;
+    // Each crystal should have a random hidden value between 1 - 12.
+        var random = Math.ceil(Math.random() * 12);
+    // When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
 
         var crystal = $("<div>");
             crystal.attr({
@@ -58,68 +52,63 @@ var startGame = function () {
             })
 
         $(".crystals").append(crystal);
+        crystal.html(random);
     }
 
     $("#previous").html("Total Score: " + previous);
 
 }
 
-
 startGame();
+    // When the player clicks on a crystal, it will add a specific amount of points to the player's total score. 
+    $(document).on('click', ".crystal", function() {
 
+        var num = parseInt($(this).attr('data-random'));
+    // When they do click one, update the player's score counter.   
+        previous += num;
 
-$(document).on('click', ".crystal", function() {
+        $("#previous").html("Total Score: " + previous);
+    // The player loses if their score goes above the random number.
+        if(previous > random_result){
+        
+            lost++;     
+    // The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
+            $("#lost").html("Losses: " + lost);
 
-    var num = parseInt($(this).attr('data-random'));
-    
-    previous += num;
-
-    $("#previous").html("Total Score: " + previous);
-
-    if(previous > random_result){
-
-        lost++;
-     
-
-        $("#lost").html("Losses: " + lost);
-
-        previous = 0;
+            previous = 0;
     // The game restarts whenever the player wins or loses.
-        startGame();
+            startGame();
 
-    }
-    else if(previous === random_result){
+        }
+        else if(previous === random_result){
 
-        win++;
-        audioElement.play();
+    // The player wins if their total score matches the random number from the beginning of the game.
 
-
-
-        $("#win").html("Wins: " + win);
-
-        previous = 0;
-    // The game restarts whenever the player wins or loses.
-        startGame();
-
-    }
-    
-});
-
-// Your game will hide this amount until the player clicks a crystal.
-// When they do click one, update the player's score counter.
+            win++;
+            audioElement.play();
 
 
-// The player wins if their total score matches the random number from the beginning of the game.
-// The player loses if their score goes above the random number.
+
+            $("#win").html("Wins: " + win);
+
+            previous = 0;
+     // The game restarts whenever the player wins or loses.
+            startGame();
+
+        }
+
+    });
 
 
 
 
-// When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
-
-
-// The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
 
 
 
-// Each crystal should have a random hidden value between 1 - 12.
+
+
+
+
+
+
+
