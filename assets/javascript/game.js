@@ -14,21 +14,21 @@ var previous = 0;
     
     // Create an audio element with JavaScript
     var audioElement = document.createElement("audio");
+    audioElement.volume = 0.2;
+
     
     // Set it's source to the location
-    // of our Captain Planet theme song file.
+    // of audio file.
     audioElement.setAttribute("src", "assets/audio/Porter Ln 5.mp3");
     
     // Theme Button
-    $(".theme-button").on("click", function() {
-      audioElement.play();
-    });
+    // $(".theme-button").on("click", function() {
+     
+    //   audioElement.play()
+      
+    // });
     
-    // Pause Button
-    $(".pause-button").on("click", function() {
-      audioElement.pause();
-    });
-
+    
 var startGame = function () {
 
     $(".crystals").empty();
@@ -79,6 +79,7 @@ $(document).on('click', ".crystal", function() {
     if(previous > random_result){
 
         lost++;
+     
 
         $("#lost").html("Losses: " + lost);
 
@@ -90,6 +91,9 @@ $(document).on('click', ".crystal", function() {
     else if(previous === random_result){
 
         win++;
+        audioElement.play();
+
+
 
         $("#win").html("Wins: " + win);
 

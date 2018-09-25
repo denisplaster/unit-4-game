@@ -29,6 +29,29 @@ body {
     cursor: pointer;
 }
 
+#result {
+    padding: 20px;
+    background-color: gold;
+    text-align: center;
+}
+
+.jumbotron {
+    background-image: url("../images/BigheartedSarcasticBlesbok-small.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.col-12{
+    padding:10px;
+    background-color: gold;
+    text-align: center;
+
+}
+
 img{
     width:50px;
+}
+
+p {
+    
 }
