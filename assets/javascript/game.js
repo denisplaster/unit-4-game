@@ -57,15 +57,13 @@ var startGame = function () {
             })
 
         $(".crystals").append(crystal);
-        console.log(crystal)
-         var newRandom = (crystal.data().random)
-         console.log(newRandom)
         
-          
         $( "#clue" ).click(function() {
             for (var j = 0; j < 4; j++) {
-                console.log(j);
-                $("#crystal-"+j).text(newRandom);
+
+                let value = $("#crystal-"+j).data();
+                
+                $("#crystal-"+j).html(value.random);
             }
     
             
