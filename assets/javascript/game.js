@@ -38,6 +38,7 @@ var startGame = function () {
     $("#result").css({"font-size": "150%"});
     // There will be four crystals displayed as buttons on the page.
     for (var i = 0; i < 4; i++) {
+        console.log(i)
     // Each crystal should have a random hidden value between 1 - 12.
         var random = Math.ceil(Math.random() * 12);
     // When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
@@ -45,7 +46,9 @@ var startGame = function () {
         var crystal = $("<div>");
             crystal.attr({
                 "class": 'crystal',
-                "data-random": random
+                "data-random": random,
+                "id":"crystal-" + i
+
             } );
 
             crystal.css({
@@ -54,9 +57,18 @@ var startGame = function () {
             })
 
         $(".crystals").append(crystal);
+        console.log(crystal)
+         var newRandom = (crystal.data().random)
+         console.log(newRandom)
+        
           
         $( "#clue" ).click(function() {
-            crystal.html(random);
+            for (var j = 0; j < 4; j++) {
+                console.log(j);
+                $("#crystal-"+j).text(newRandom);
+            }
+    
+            
           });
         
     }
