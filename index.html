@@ -13,7 +13,7 @@
     
 </head>
 <body>
-        <iframe src="assets/audio/Gettin' Better Simon Dominic.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+        <iframe src="assets/audio/Gettin' Better Simon Dominic.mp3" allow="autoplay loop" style="display:none" id="iframeAudio">
         </iframe> 
         <audio autoplay loop  id="playAudio">
                 <source src="assets/audio/Gettin' Better Simon Dominic.mp3">
@@ -26,8 +26,7 @@
         </div>
         <div id="result"></div>
         <div class="jumbotron">
-                <button type="button" class="btn btn-primary btn-sm easy">Easy Mode</button>
-                <button type="button" class="btn btn-secondary btn-sm hard">Hard Mode</button>
+                <button type="button" class="btn btn-primary btn-sm" id="clue">Clue</button>
             <div class="crystals"></div>
             <p class="border border-dark">Click on the Pillsbury doughboy to collect crystals. Match the collected crystal score with the Random number generated at the top of the screen.</p>
         </div>

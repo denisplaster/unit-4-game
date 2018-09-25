@@ -1,4 +1,5 @@
 var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+isChrome.volume = 0.1;
     if(!isChrome){
       $('#iframeAudio').remove()
     }
@@ -11,7 +12,7 @@ var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator
     
     // Create an audio element with JavaScript
     var audioElement = document.createElement("audio");
-    audioElement.volume = 0.2;
+    // audioElement.volume = 0.8;
 
     
     // Set it's source to the location of audio file.
@@ -52,7 +53,11 @@ var startGame = function () {
             })
 
         $(".crystals").append(crystal);
-        crystal.html(random);
+          
+        $( "#clue" ).click(function() {
+            crystal.html(random);
+          });
+        
     }
 
     $("#previous").html("Total Score: " + previous);
@@ -86,8 +91,6 @@ startGame();
 
             win++;
             audioElement.play();
-
-
 
             $("#win").html("Wins: " + win);
 
